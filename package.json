@@ -1,11 +1,19 @@
 {
   "name": "template-package-react",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "main": "dist/library.cjs",
+  "module": "dist/library.js",
+  "types": "dist/lib/main.d.ts",
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:types": "tsc -p tsconfig.build.json",
+    "build:pack": "pnpm build && pnpm build:types && pnpm pack --pack-destination ~",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -14,6 +22,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/node": "^20.11.8",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
